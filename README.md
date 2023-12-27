@@ -1,1 +1,1 @@
-Full Stack MERN project
+Full stact ecommerce project
