@@ -25,15 +25,15 @@ const Category = () => {
       {categoryDrawerOpen && (
         <div className="w-full flex justify-between items-center h-16 px-6 py-4 bg-blue-500 text-white border-b border-gray-100">
           <h2 className="font-semibold font-serif text-lg m-0 text-heading flex align-center">
-            <Link href="/">
-              <a className="mr-10">
-                <Image
-                  width={100}
-                  height={38}
-                  src="/logo/logo-light.svg"
-                  alt="logo"
-                />
-              </a>
+            <Link href="/" className="mr-10">
+
+              <Image
+                width={100}
+                height={38}
+                src="/logo/logo-light.svg"
+                alt="logo"
+              />
+
             </Link>
           </h2>
           <button

@@ -174,7 +174,7 @@ const contactData = [
     title: 'contact-page-box1-title',
     info: 'contact-page-box1-info',
     icon: FiMail,
-    contact: 'mernshop@gmail.com',
+    contact: 'nepmarket@gmail.com',
     className: 'bg-blue-100',
   },
   {

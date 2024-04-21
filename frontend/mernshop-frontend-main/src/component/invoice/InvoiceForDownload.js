@@ -282,7 +282,7 @@ const InvoiceForDownload = ({ data, currency, globalSetting }) => {
                   marginRight: "40%",
                 }}
               >
-                MernShop
+                Nepmarket
               </Text>
               <Text style={styles.topAddress}>
                 {globalSetting?.address ||

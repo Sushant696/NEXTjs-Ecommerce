@@ -221,318 +221,316 @@ const ProductScreen = ({ product, attributes, relatedProduct }) => {
     .toLowerCase()
     .replace(/[^A-Z0-9]+/gi, "-");
 
-  return (
-    <>
-      {isLoading ? (
-        <Loading loading={isLoading} />
-      ) : (
-        <Layout
-          title={showingTranslateValue(product?.title, lang)}
-          description={showingTranslateValue(product.description, lang)}
-        >
-          <div className="px-0 py-10 lg:py-10">
-            <div className="mx-auto px-3 lg:px-10 max-w-screen-2xl">
-              <div className="flex items-center pb-4">
-                <ol className="flex items-center w-full overflow-hidden font-serif">
-                  <li className="text-sm pr-1 transition duration-200 ease-in cursor-pointer hover:text-blue-500 font-semibold">
-                    <Link href="/">
-                      <a>Home</a>
-                    </Link>
-                  </li>
-                  <li className="text-sm mt-[1px]">
-                    {" "}
-                    <FiChevronRight />{" "}
-                  </li>
-                  <li className="text-sm pl-1 transition duration-200 ease-in cursor-pointer hover:text-blue-500 font-semibold ">
-                    <Link
-                      href={`/search?category=${category_name}&_id=${product?.category?._id}`}
+  return <>
+    {isLoading ? (
+      <Loading loading={isLoading} />
+    ) : (
+      <Layout
+        title={showingTranslateValue(product?.title, lang)}
+        description={showingTranslateValue(product.description, lang)}
+      >
+        <div className="px-0 py-10 lg:py-10">
+          <div className="mx-auto px-3 lg:px-10 max-w-screen-2xl">
+            <div className="flex items-center pb-4">
+              <ol className="flex items-center w-full overflow-hidden font-serif">
+                <li className="text-sm pr-1 transition duration-200 ease-in cursor-pointer hover:text-blue-500 font-semibold">
+                  <Link href="/">
+                    Home
+                  </Link>
+                </li>
+                <li className="text-sm mt-[1px]">
+                  {" "}
+                  <FiChevronRight />{" "}
+                </li>
+                <li className="text-sm pl-1 transition duration-200 ease-in cursor-pointer hover:text-blue-500 font-semibold ">
+                  <Link
+                    href={`/search?category=${category_name}&_id=${product?.category?._id}`}
+                    legacyBehavior>
+                    <button
+                      type="button"
+                      onClick={() => setIsLoading(!isLoading)}
                     >
-                      <button
-                        type="button"
-                        onClick={() => setIsLoading(!isLoading)}
-                      >
-                        {category_name}
-                      </button>
-                    </Link>
-                  </li>
-                  <li className="text-sm mt-[1px]">
-                    {" "}
-                    <FiChevronRight />{" "}
-                  </li>
-                  <li className="text-sm px-1 transition duration-200 ease-in ">
-                    {showingTranslateValue(product?.title, lang)}
-                  </li>
-                </ol>
-              </div>
-              <div className="w-full rounded-lg p-3 lg:p-12 bg-white">
-                <div className="flex flex-col xl:flex-row">
-                  <div className="flex-shrink-0 xl:pr-10 lg:block w-full mx-auto md:w-6/12 lg:w-5/12 xl:w-4/12">
-                    <Discount
-                      slug={true}
-                      product={product}
-                      discount={discount}
+                      {category_name}
+                    </button>
+                  </Link>
+                </li>
+                <li className="text-sm mt-[1px]">
+                  {" "}
+                  <FiChevronRight />{" "}
+                </li>
+                <li className="text-sm px-1 transition duration-200 ease-in ">
+                  {showingTranslateValue(product?.title, lang)}
+                </li>
+              </ol>
+            </div>
+            <div className="w-full rounded-lg p-3 lg:p-12 bg-white">
+              <div className="flex flex-col xl:flex-row">
+                <div className="flex-shrink-0 xl:pr-10 lg:block w-full mx-auto md:w-6/12 lg:w-5/12 xl:w-4/12">
+                  <Discount
+                    slug={true}
+                    product={product}
+                    discount={discount}
+                  />
+
+                  {product.image[0] ? (
+                    <Image
+                      src={img || product.image[0]}
+                      alt="product"
+                      width={650}
+                      height={650}
+                      priority
                     />
+                  ) : (
+                    <Image
+                      src="https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png"
+                      width={650}
+                      height={650}
+                      alt="product Image"
+                    />
+                  )}
 
-                    {product.image[0] ? (
-                      <Image
-                        src={img || product.image[0]}
-                        alt="product"
-                        width={650}
-                        height={650}
-                        priority
+                  {product.image.length > 1 && (
+                    <div className="flex flex-row flex-wrap mt-4 border-t">
+                      <ImageCarousel
+                        images={product.image}
+                        handleChangeImage={handleChangeImage}
+                        prevRef={prevRef}
+                        nextRef={nextRef}
                       />
-                    ) : (
-                      <Image
-                        src="https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png"
-                        width={650}
-                        height={650}
-                        alt="product Image"
-                      />
-                    )}
-
-                    {product.image.length > 1 && (
-                      <div className="flex flex-row flex-wrap mt-4 border-t">
-                        <ImageCarousel
-                          images={product.image}
-                          handleChangeImage={handleChangeImage}
-                          prevRef={prevRef}
-                          nextRef={nextRef}
-                        />
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="w-full">
-                    <div className="flex flex-col md:flex-row lg:flex-row xl:flex-row">
-                      <div className=" w-3/5 xl:pr-6 md:pr-6  md:w-2/3 mob-w-full">
-                        <div className="mb-6">
-                          <h1 className="leading-7 text-lg md:text-xl lg:text-2xl mb-1 font-semibold font-serif text-gray-800">
-                            {showingTranslateValue(product?.title, lang)}
-                          </h1>
-
-                          <p className="uppercase font-serif font-medium text-gray-500 text-sm">
-                            SKU :{" "}
-                            <span className="font-bold text-gray-600">
-                              {product.sku}
-                            </span>
-                          </p>
-
-                          <div className="relative">
-                            <Stock stock={stock} />
-                          </div>
-                        </div>
-                        <Price
-                          price={price}
-                          product={product}
-                          currency={currency}
-                          originalPrice={originalPrice}
-                        />
-
-                        <div className="mb-4">
-                          {variantTitle?.map((a, i) => (
-                            <span key={i + 1}>
-                              <h4 className="text-sm py-1">
-                                {showingTranslateValue(a?.name, lang)}:
-                              </h4>
-                              <div className="flex flex-row mb-3">
-                                <VariantList
-                                  att={a._id}
-                                  lang={lang}
-                                  option={a.option}
-                                  setValue={setValue}
-                                  varTitle={variantTitle}
-                                  setSelectVa={setSelectVa}
-                                  variants={product.variants}
-                                  selectVariant={selectVariant}
-                                  setSelectVariant={setSelectVariant}
-                                />
-                              </div>
-                            </span>
-                          ))}
-                        </div>
-
-                        <div>
-                          <div className="text-sm leading-6 text-gray-500 md:leading-7">
-                            {isReadMore
-                              ? showingTranslateValue(
-                                  product?.description,
-                                  lang
-                                )?.slice(0, 230)
-                              : showingTranslateValue(
-                                  product?.description,
-                                  lang
-                                )}
-                            <br />
-                            {Object?.keys(product?.description)?.includes(lang)
-                              ? product?.description[lang]?.length > 230 && (
-                                  <span
-                                    onClick={() => setIsReadMore(!isReadMore)}
-                                    className="read-or-hide"
-                                  >
-                                    {isReadMore
-                                      ? t("common:moreInfo")
-                                      : t("common:showLess")}
-                                  </span>
-                                )
-                              : product?.description?.en?.length > 230 && (
-                                  <span
-                                    onClick={() => setIsReadMore(!isReadMore)}
-                                    className="read-or-hide"
-                                  >
-                                    {isReadMore
-                                      ? t("common:moreInfo")
-                                      : t("common:showLess")}
-                                  </span>
-                                )}
-                          </div>
-
-                          <div className="flex items-center mt-4">
-                            <div className="flex items-center justify-between space-s-3 sm:space-s-4 w-full">
-                              <div className="group flex items-center justify-between rounded-md overflow-hidden flex-shrink-0 border h-11 md:h-12 border-gray-300">
-                                <button
-                                  onClick={() => setItem(item - 1)}
-                                  disabled={item === 1}
-                                  className="flex items-center justify-center flex-shrink-0 h-full transition ease-in-out duration-300 focus:outline-none w-8 md:w-12 text-heading border-e border-gray-300 hover:text-gray-500"
-                                >
-                                  <span className="text-dark text-base">
-                                    <FiMinus />
-                                  </span>
-                                </button>
-                                <p className="font-semibold flex items-center justify-center h-full  transition-colors duration-250 ease-in-out cursor-default flex-shrink-0 text-base text-heading w-8  md:w-20 xl:w-24">
-                                  {item}
-                                </p>
-                                <button
-                                  onClick={() => setItem(item + 1)}
-                                  disabled={selectVariant?.quantity <= item}
-                                  className="flex items-center justify-center h-full flex-shrink-0 transition ease-in-out duration-300 focus:outline-none w-8 md:w-12 text-heading border-s border-gray-300 hover:text-gray-500"
-                                >
-                                  <span className="text-dark text-base">
-                                    <FiPlus />
-                                  </span>
-                                </button>
-                              </div>
-                              <button
-                                onClick={() => handleAddToCart(product)}
-                                className="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold font-serif text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-blue-500 hover:bg-blue-600 w-full h-12"
-                              >
-                                {t("common:addToCart")}
-                              </button>
-                            </div>
-                          </div>
-
-                          <div className="flex flex-col mt-4">
-                            <span className="font-serif font-semibold py-1 text-sm d-block">
-                              <span className="text-gray-800">
-                                {t("common:category")}:
-                              </span>{" "}
-                              <Link
-                                href={`/search?category=${category_name}&_id=${product?.category?._id}`}
-                              >
-                                <button
-                                  type="button"
-                                  className="text-gray-600 font-serif font-medium underline ml-2 hover:text-teal-600"
-                                  onClick={() => setIsLoading(!isLoading)}
-                                >
-                                  {category_name}
-                                </button>
-                              </Link>
-                            </span>
-                            <Tags product={product} />
-                          </div>
-
-                          {/* social share */}
-                          <div className="mt-8">
-                            <h3 className="text-base font-semibold mb-1 font-serif">
-                              {t("common:shareYourSocial")}
-                            </h3>
-                            <p className="font-sans text-sm text-gray-500">
-                              {t("common:shareYourSocialText")}
-                            </p>
-                            <ul className="flex mt-4">
-                              <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-blue-500  mr-2 transition ease-in-out duration-500">
-                                <FacebookShareButton
-                                  url={`https://supermarket-plum.vercel.app/product/${router.query.slug}`}
-                                  quote=""
-                                >
-                                  <FacebookIcon size={32} round />
-                                </FacebookShareButton>
-                              </li>
-                              <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-blue-500  mr-2 transition ease-in-out duration-500">
-                                <TwitterShareButton
-                                  url={`https://supermarket-plum.vercel.app/product/${router.query.slug}`}
-                                  quote=""
-                                >
-                                  <TwitterIcon size={32} round />
-                                </TwitterShareButton>
-                              </li>
-                              <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-blue-500  mr-2 transition ease-in-out duration-500">
-                                <RedditShareButton
-                                  url={`https://supermarket-plum.vercel.app/product/${router.query.slug}`}
-                                  quote=""
-                                >
-                                  <RedditIcon size={32} round />
-                                </RedditShareButton>
-                              </li>
-                              <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-blue-500  mr-2 transition ease-in-out duration-500">
-                                <WhatsappShareButton
-                                  url={`https://supermarket-plum.vercel.app/product/${router.query.slug}`}
-                                  quote=""
-                                >
-                                  <WhatsappIcon size={32} round />
-                                </WhatsappShareButton>
-                              </li>
-                              <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-blue-500  mr-2 transition ease-in-out duration-500">
-                                <LinkedinShareButton
-                                  url={`https://supermarket-plum.vercel.app/product/${router.query.slug}`}
-                                  quote=""
-                                >
-                                  <LinkedinIcon size={32} round />
-                                </LinkedinShareButton>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* shipping description card */}
-
-                      <div className="w-full xl:w-5/12 lg:w-6/12 md:w-5/12">
-                        <div className="mt-6 md:mt-0 lg:mt-0 bg-gray-50 border border-gray-100 p-4 lg:p-8 rounded-lg">
-                          <Card />
-                        </div>
-                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
-              </div>
 
-              {/* related products */}
-              {relatedProduct?.length >= 2 && (
-                <div className="pt-10 lg:pt-20 lg:pb-10">
-                  <h3 className="leading-7 text-lg lg:text-xl mb-3 font-semibold font-serif hover:text-gray-600">
-                    {t("common:relatedProducts")}
-                  </h3>
-                  <div className="flex">
-                    <div className="w-full">
-                      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-6 gap-2 md:gap-3 lg:gap-3">
-                        {relatedProduct?.slice(1, 13).map((product, i) => (
-                          <ProductCard
-                            key={product._id}
-                            product={product}
-                            attributes={attributes}
-                          />
+                <div className="w-full">
+                  <div className="flex flex-col md:flex-row lg:flex-row xl:flex-row">
+                    <div className=" w-3/5 xl:pr-6 md:pr-6  md:w-2/3 mob-w-full">
+                      <div className="mb-6">
+                        <h1 className="leading-7 text-lg md:text-xl lg:text-2xl mb-1 font-semibold font-serif text-gray-800">
+                          {showingTranslateValue(product?.title, lang)}
+                        </h1>
+
+                        <p className="uppercase font-serif font-medium text-gray-500 text-sm">
+                          SKU :{" "}
+                          <span className="font-bold text-gray-600">
+                            {product.sku}
+                          </span>
+                        </p>
+
+                        <div className="relative">
+                          <Stock stock={stock} />
+                        </div>
+                      </div>
+                      <Price
+                        price={price}
+                        product={product}
+                        currency={currency}
+                        originalPrice={originalPrice}
+                      />
+
+                      <div className="mb-4">
+                        {variantTitle?.map((a, i) => (
+                          <span key={i + 1}>
+                            <h4 className="text-sm py-1">
+                              {showingTranslateValue(a?.name, lang)}:
+                            </h4>
+                            <div className="flex flex-row mb-3">
+                              <VariantList
+                                att={a._id}
+                                lang={lang}
+                                option={a.option}
+                                setValue={setValue}
+                                varTitle={variantTitle}
+                                setSelectVa={setSelectVa}
+                                variants={product.variants}
+                                selectVariant={selectVariant}
+                                setSelectVariant={setSelectVariant}
+                              />
+                            </div>
+                          </span>
                         ))}
                       </div>
+
+                      <div>
+                        <div className="text-sm leading-6 text-gray-500 md:leading-7">
+                          {isReadMore
+                            ? showingTranslateValue(
+                                product?.description,
+                                lang
+                              )?.slice(0, 230)
+                            : showingTranslateValue(
+                                product?.description,
+                                lang
+                              )}
+                          <br />
+                          {Object?.keys(product?.description)?.includes(lang)
+                            ? product?.description[lang]?.length > 230 && (
+                                <span
+                                  onClick={() => setIsReadMore(!isReadMore)}
+                                  className="read-or-hide"
+                                >
+                                  {isReadMore
+                                    ? t("common:moreInfo")
+                                    : t("common:showLess")}
+                                </span>
+                              )
+                            : product?.description?.en?.length > 230 && (
+                                <span
+                                  onClick={() => setIsReadMore(!isReadMore)}
+                                  className="read-or-hide"
+                                >
+                                  {isReadMore
+                                    ? t("common:moreInfo")
+                                    : t("common:showLess")}
+                                </span>
+                              )}
+                        </div>
+
+                        <div className="flex items-center mt-4">
+                          <div className="flex items-center justify-between space-s-3 sm:space-s-4 w-full">
+                            <div className="group flex items-center justify-between rounded-md overflow-hidden flex-shrink-0 border h-11 md:h-12 border-gray-300">
+                              <button
+                                onClick={() => setItem(item - 1)}
+                                disabled={item === 1}
+                                className="flex items-center justify-center flex-shrink-0 h-full transition ease-in-out duration-300 focus:outline-none w-8 md:w-12 text-heading border-e border-gray-300 hover:text-gray-500"
+                              >
+                                <span className="text-dark text-base">
+                                  <FiMinus />
+                                </span>
+                              </button>
+                              <p className="font-semibold flex items-center justify-center h-full  transition-colors duration-250 ease-in-out cursor-default flex-shrink-0 text-base text-heading w-8  md:w-20 xl:w-24">
+                                {item}
+                              </p>
+                              <button
+                                onClick={() => setItem(item + 1)}
+                                disabled={selectVariant?.quantity <= item}
+                                className="flex items-center justify-center h-full flex-shrink-0 transition ease-in-out duration-300 focus:outline-none w-8 md:w-12 text-heading border-s border-gray-300 hover:text-gray-500"
+                              >
+                                <span className="text-dark text-base">
+                                  <FiPlus />
+                                </span>
+                              </button>
+                            </div>
+                            <button
+                              onClick={() => handleAddToCart(product)}
+                              className="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold font-serif text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-blue-500 hover:bg-blue-600 w-full h-12"
+                            >
+                              {t("common:addToCart")}
+                            </button>
+                          </div>
+                        </div>
+
+                        <div className="flex flex-col mt-4">
+                          <span className="font-serif font-semibold py-1 text-sm d-block">
+                            <span className="text-gray-800">
+                              {t("common:category")}:
+                            </span>{" "}
+                            <Link
+                              href={`/search?category=${category_name}&_id=${product?.category?._id}`}
+                              legacyBehavior>
+                              <button
+                                type="button"
+                                className="text-gray-600 font-serif font-medium underline ml-2 hover:text-teal-600"
+                                onClick={() => setIsLoading(!isLoading)}
+                              >
+                                {category_name}
+                              </button>
+                            </Link>
+                          </span>
+                          <Tags product={product} />
+                        </div>
+
+                        {/* social share */}
+                        <div className="mt-8">
+                          <h3 className="text-base font-semibold mb-1 font-serif">
+                            {t("common:shareYourSocial")}
+                          </h3>
+                          <p className="font-sans text-sm text-gray-500">
+                            {t("common:shareYourSocialText")}
+                          </p>
+                          <ul className="flex mt-4">
+                            <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-blue-500  mr-2 transition ease-in-out duration-500">
+                              <FacebookShareButton
+                                url={`https://supermarket-plum.vercel.app/product/${router.query.slug}`}
+                                quote=""
+                              >
+                                <FacebookIcon size={32} round />
+                              </FacebookShareButton>
+                            </li>
+                            <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-blue-500  mr-2 transition ease-in-out duration-500">
+                              <TwitterShareButton
+                                url={`https://supermarket-plum.vercel.app/product/${router.query.slug}`}
+                                quote=""
+                              >
+                                <TwitterIcon size={32} round />
+                              </TwitterShareButton>
+                            </li>
+                            <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-blue-500  mr-2 transition ease-in-out duration-500">
+                              <RedditShareButton
+                                url={`https://supermarket-plum.vercel.app/product/${router.query.slug}`}
+                                quote=""
+                              >
+                                <RedditIcon size={32} round />
+                              </RedditShareButton>
+                            </li>
+                            <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-blue-500  mr-2 transition ease-in-out duration-500">
+                              <WhatsappShareButton
+                                url={`https://supermarket-plum.vercel.app/product/${router.query.slug}`}
+                                quote=""
+                              >
+                                <WhatsappIcon size={32} round />
+                              </WhatsappShareButton>
+                            </li>
+                            <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-blue-500  mr-2 transition ease-in-out duration-500">
+                              <LinkedinShareButton
+                                url={`https://supermarket-plum.vercel.app/product/${router.query.slug}`}
+                                quote=""
+                              >
+                                <LinkedinIcon size={32} round />
+                              </LinkedinShareButton>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* shipping description card */}
+
+                    <div className="w-full xl:w-5/12 lg:w-6/12 md:w-5/12">
+                      <div className="mt-6 md:mt-0 lg:mt-0 bg-gray-50 border border-gray-100 p-4 lg:p-8 rounded-lg">
+                        <Card />
+                      </div>
                     </div>
                   </div>
                 </div>
-              )}
+              </div>
             </div>
+
+            {/* related products */}
+            {relatedProduct?.length >= 2 && (
+              <div className="pt-10 lg:pt-20 lg:pb-10">
+                <h3 className="leading-7 text-lg lg:text-xl mb-3 font-semibold font-serif hover:text-gray-600">
+                  {t("common:relatedProducts")}
+                </h3>
+                <div className="flex">
+                  <div className="w-full">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-6 gap-2 md:gap-3 lg:gap-3">
+                      {relatedProduct?.slice(1, 13).map((product, i) => (
+                        <ProductCard
+                          key={product._id}
+                          product={product}
+                          attributes={attributes}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
-        </Layout>
-      )}
-    </>
-  );
+        </div>
+      </Layout>
+    )}
+  </>;
 };
 
 // you can use getServerSideProps alternative for getStaticProps and getStaticPaths

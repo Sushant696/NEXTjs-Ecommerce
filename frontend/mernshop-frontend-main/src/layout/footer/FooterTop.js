@@ -25,27 +25,34 @@ const FooterTop = () => {
             {t("common:footer-top-paragraph-text")}
             </p>
             <div className="mt-8">
-              <Link href="https://www.apple.com/app-store/">
-                <a className="mx-2" target="_blank" rel="noreferrer">
-                  <Image
-                    width={170}
-                    height={50}
-                    className="mr-2 rounded"
-                    src="/app/app-store.svg"
-                    alt="app store"
-                  />
-                </a>
+              <Link
+                href="https://www.apple.com/app-store/"
+                className="mx-2"
+                target="_blank"
+                rel="noreferrer">
+
+                <Image
+                  width={170}
+                  height={50}
+                  className="mr-2 rounded"
+                  src="/app/app-store.svg"
+                  alt="app store"
+                />
+
               </Link>
-              <Link href="https://play.google.com/store/apps">
-                <a target="_blank" rel="noreferrer">
-                  <Image
-                    width={170}
-                    height={50}
-                    className="rounded"
-                    src="/app/play-store.svg"
-                    alt="app store"
-                  />
-                </a>
+              <Link
+                href="https://play.google.com/store/apps"
+                target="_blank"
+                rel="noreferrer">
+
+                <Image
+                  width={170}
+                  height={50}
+                  className="rounded"
+                  src="/app/play-store.svg"
+                  alt="app store"
+                />
+
               </Link>
             </div>
           </div>
