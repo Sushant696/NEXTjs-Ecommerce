@@ -1,18 +1,18 @@
-import React from 'react';
-import Image from 'next/image';
-import { useForm } from 'react-hook-form';
+import React from "react";
+import Image from "next/image";
+import { useForm } from "react-hook-form";
 import useTranslation from "next-translate/useTranslation";
 //internal import
-import Layout from '@layout/Layout';
-import Label from '@component/form/Label';
-import Error from '@component/form/Error';
-import { contactData } from '@utils/data';
-import { notifySuccess } from '@utils/toast';
-import InputArea from '@component/form/InputArea';
-import PageHeader from '@component/header/PageHeader';
+import Layout from "@layout/Layout";
+import Label from "@component/form/Label";
+import Error from "@component/form/Error";
+import { contactData } from "@utils/data";
+import { notifySuccess } from "@utils/toast";
+import InputArea from "@component/form/InputArea";
+import PageHeader from "@component/header/PageHeader";
 
 const ContactUs = () => {
-  const {t}=useTranslation()
+  const { t } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -21,7 +21,7 @@ const ContactUs = () => {
 
   const submitHandler = () => {
     notifySuccess(
-      'your message sent successfully. We will contact you shortly.'
+      "your message sent successfully. We will contact you shortly."
     );
   };
 
@@ -38,14 +38,13 @@ const ContactUs = () => {
                 <span className="flex justify-center text-4xl text-blue-500 mb-4">
                   <data.icon />
                 </span>
-                <h5 className="text-xl mb-2 font-bold">{t(`common:${data.title}`)}</h5>
+                <h5 className="text-xl mb-2 font-bold">
+                  {t(`common:${data.title}`)}
+                </h5>
                 <p className="mb-0 text-base opacity-90 leading-7">
-                  <a
-                    href={`mailto:${data.contact}`}
-                    className="text-blue-500"
-                  >
+                  <a href={`mailto:${data.contact}`} className="text-blue-500">
                     {data.contact}
-                  </a>{' '}
+                  </a>{" "}
                   {t(`common:${data.info}`)}
                 </p>
               </div>
@@ -70,10 +69,10 @@ const ContactUs = () => {
               >
                 <div className="mb-12">
                   <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold font-serif mb-3">
-                  {t("common:contact-page-form-title")}
+                    {t("common:contact-page-form-title")}
                   </h3>
                   <p className="text-base opacity-90 leading-7">
-                  {t("common:contact-page-form-paragraph")}
+                    {t("common:contact-page-form-paragraph")}
                   </p>
                 </div>
 
@@ -85,7 +84,9 @@ const ContactUs = () => {
                         label={t("common:contact-page-form-input-name")}
                         name="name"
                         type="text"
-                        placeholder={t("common:contact-page-form-plaholder-name")}
+                        placeholder={t(
+                          "common:contact-page-form-plaholder-name"
+                        )}
                       />
                       <Error errorName={errors.name} />
                     </div>
@@ -95,7 +96,9 @@ const ContactUs = () => {
                         label={t("common:contact-page-form-input-email")}
                         name="email"
                         type="email"
-                        placeholder={t("common:contact-page-form-plaholder-email")}
+                        placeholder={t(
+                          "common:contact-page-form-plaholder-email"
+                        )}
                       />
                       <Error errorName={errors.email} />
                     </div>
@@ -106,14 +109,18 @@ const ContactUs = () => {
                       label={t("common:contact-page-form-input-subject")}
                       name="subject"
                       type="text"
-                      placeholder={t("common:contact-page-form-plaholder-subject")}
+                      placeholder={t(
+                        "common:contact-page-form-plaholder-subject"
+                      )}
                     />
                     <Error errorName={errors.subject} />
                   </div>
                   <div className="relative mb-4">
-                    <Label label={t("common:contact-page-form-input-message")} />
+                    <Label
+                      label={t("common:contact-page-form-input-message")}
+                    />
                     <textarea
-                      {...register('message', {
+                      {...register("message", {
                         required: `Message is required!`,
                       })}
                       name="message"
@@ -121,7 +128,9 @@ const ContactUs = () => {
                       autoComplete="off"
                       spellCheck="false"
                       rows="4"
-                      placeholder={t("common:contact-page-form-plaholder-message")}
+                      placeholder={t(
+                        "common:contact-page-form-plaholder-message"
+                      )}
                     ></textarea>
                     <Error errorName={errors.message} />
                   </div>
@@ -130,7 +139,7 @@ const ContactUs = () => {
                       data-variant="flat"
                       className="md:text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold text-center justify-center border-0 border-transparent rounded-md placeholder-white focus-visible:outline-none focus:outline-none bg-blue-500 text-white px-5 md:px-6 lg:px-8 py-3 md:py-3.5 lg:py-3 hover:text-white hover:bg-blue-600 h-12 mt-1 text-sm lg:text-base w-full sm:w-auto"
                     >
-                     {t("common:contact-page-form-send-btn")}
+                      {t("common:contact-page-form-send-btn")}
                     </button>
                   </div>
                 </div>

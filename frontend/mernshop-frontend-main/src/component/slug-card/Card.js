@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   FiDollarSign,
   FiHome,
@@ -7,7 +7,7 @@ import {
   FiShieldOff,
   FiSun,
   FiTruck,
-} from 'react-icons/fi';
+} from "react-icons/fi";
 
 const Card = () => {
   return (
@@ -17,7 +17,7 @@ const Card = () => {
           <FiTruck />
         </span>
         <p className="font-sans leading-5 text-sm text-gray-500">
-          Free shipping apply to all orders over shipping{' '}
+          Free shipping apply to all orders over shipping{" "}
           <span className="font-semibold">$100</span>
         </p>
       </li>
@@ -69,8 +69,7 @@ const Card = () => {
           <FiMapPin />
         </span>
         <p className="font-sans leading-5 text-sm text-gray-500">
-          Delivery from our pick point Cecilia Chapman, 561-4535 Nulla LA,
-          United States 96522
+          Delivery from our pick point Putalisadak, kathmandu.
         </p>
       </li>
     </ul>

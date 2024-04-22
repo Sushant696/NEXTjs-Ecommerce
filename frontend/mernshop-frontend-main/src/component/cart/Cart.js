@@ -19,7 +19,7 @@ const Cart = () => {
   const { toggleCartDrawer, closeCartDrawer } = useContext(SidebarContext);
   const { data: globalSetting } = useAsync(SettingServices.getGlobalSetting);
 
-  const currency = globalSetting?.default_currency || "$";
+  const currency = globalSetting?.default_currency || "Rs";
 
   const {
     state: { userInfo },

@@ -264,4 +264,4 @@ const Footer = () => {
   );
 };
 
-export default dynamic(() => Promise.resolve(Footer), { ssr: false });
+  export default dynamic(() => Promise.resolve(Footer), { ssr: false });

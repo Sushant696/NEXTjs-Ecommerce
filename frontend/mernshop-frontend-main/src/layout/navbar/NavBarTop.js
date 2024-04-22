@@ -46,10 +46,10 @@ const NavBarTop = () => {
             <FiPhoneCall className="mr-2" />
             {t("common:Call Us")}
             <a
-              href="tel:+012345609"
+              href="tel:98765456"
               className="font-bold text-blue-500 ml-1"
             >
-              +01234560352
+              +98765444556
             </a>
           </span>
 

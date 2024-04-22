@@ -18,7 +18,7 @@ const Coupon = ({ couponInHome }) => {
   const { data, error } = useAsync(CouponServices.getAllCoupons);
   const { data: globalSetting } = useAsync(SettingServices.getGlobalSetting);
 
-  const currency = globalSetting?.default_currency || "$";
+  const currency = globalSetting?.default_currency || "Rs";
   // console.log("coupon  data", data);
 
   const handleCopied = (code) => {
@@ -53,7 +53,7 @@ const Coupon = ({ couponInHome }) => {
                   <h6 className="pl-1 text-base font-medium text-gray-600">
                     <span className="text-lg md:text-xl lg:text-xl text-red-500 font-bold">
                       {coupon?.discountType?.type === "fixed" ? (
-                        <span>${coupon?.discountType?.value}</span>
+                        <span>Rs{coupon?.discountType?.value}</span>
                       ) : (
                         <span>{coupon?.discountType?.value}%</span>
                       )}
@@ -193,7 +193,7 @@ const Coupon = ({ couponInHome }) => {
                 <h2 className="pl-1 text-base font-medium text-gray-600">
                   <span className="text-lg md:text-xl lg:text-xl text-red-500 font-bold">
                     {coupon?.discountType?.type === "fixed" ? (
-                      <span>${coupon?.discountType?.value}</span>
+                      <span>Rs{coupon?.discountType?.value}</span>
                     ) : (
                       <span>{coupon?.discountType?.value}%</span>
                     )}

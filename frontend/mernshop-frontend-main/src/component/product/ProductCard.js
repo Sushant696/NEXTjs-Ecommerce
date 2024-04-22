@@ -24,7 +24,7 @@ const ProductCard = ({ product, attributes }) => {
 
   const { data: globalSetting } = useAsync(SettingServices.getGlobalSetting);
 
-  const currency = globalSetting?.default_currency || "$";
+  const currency = globalSetting?.default_currency || "Rs";
 
   // console.log('attributes in product cart',attributes)
 

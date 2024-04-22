@@ -161,7 +161,6 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                 </div>
               </div>
             </div>
-
           </div>
         </Layout>
       )}

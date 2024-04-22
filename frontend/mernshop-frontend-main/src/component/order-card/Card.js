@@ -7,7 +7,7 @@ const Card = ({ title, Icon, quantity, className }) => {
         <div
           className={`flex items-center justify-center p-3 rounded-full h-12 w-12 text-xl text-center mr-4 ${className}`}
         >
-          <Icon />
+          {/* <Icon /> */}
         </div>
         <div>
           <h5 className="leading-none mb-2 text-base font-medium font-serif text-gray-700">
