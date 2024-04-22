@@ -1,1 +1,1 @@
-Full stact ecommerce project
+Full stack ecommerce project
