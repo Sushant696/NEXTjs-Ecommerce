@@ -7,12 +7,12 @@ const currency = [
   {
     name: "Dollar",
     symbol: "$",
-    status: "show",
+    status: "hide",
   },
   {
     name: "Pound",
     symbol: "£",
-    status: "show",
+    status: "hide",
   },
 ];
 
