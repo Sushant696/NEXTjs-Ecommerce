@@ -1,18 +1,18 @@
 const currency = [
   {
     name: "Rupees",
-    symbol: "NPR",
+    symbol: "Rs",
     status: "show",
   },
   {
-    name: "Dollar",
-    symbol: "$",
-    status: "hide",
+    name: "Rupees",
+    symbol: "Rs",
+    status: "show",
   },
   {
-    name: "Pound",
-    symbol: "£",
-    status: "hide",
+    name: "Rupees",
+    symbol: "Rs",
+    status: "show",
   },
 ];
 

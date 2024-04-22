@@ -5,26 +5,26 @@
     },
     "setting": {
       "number_of_image_per_product": "5",
-      "shop_name": "Mernshop",
-      "address": "London, london-1230, England",
-      "company_name": "Mernshop ltd",
+      "shop_name": "NepMarket",
+      "address": "Kathmandu, Nepal",
+      "company_name": "Nepmarket Ltd",
       "vat_number": "47589",
       "post_code": "2030",
       "contact": "019579034",
-      "email": "Mernshop@gmail.com",
-      "website": "Mernshop-admin.vercel.app",
-      "default_currency": "€",
-      "default_time_zone": "Europe/London",
+      "email": "nepmarket@gmail.com",
+      "website": "nepmarket-admin.vercel.app", // domain changed w
+      "default_currency": "Rs",
+      "default_time_zone": "Kathmandu",
       "default_date_format": "MMM D, YYYY",
       "receipt_size": "57-mm"
     },
     "name": "globalSetting",
     "__v": 0,
     "createdAt": {
-      "$date": "2023-04-14T15:27:13.794Z"
+      "$date": "2023-02-14T15:27:13.794Z"
     },
     "updatedAt": {
-      "$date": "2023-04-16T05:22:50.071Z"
+      "$date": "2023-01-16T05:22:50.071Z"
     }
   }
 ]
