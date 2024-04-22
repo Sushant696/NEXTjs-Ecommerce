@@ -1,7 +1,7 @@
 const currency = [
   {
-    name: "Euro",
-    symbol: "€",
+    name: "Rupees",
+    symbol: "NPR",
     status: "show",
   },
   {
